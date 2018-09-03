@@ -1,0 +1,5 @@
+target 'WKWebView-JS' do
+
+use_frameworks!
+pod 'Masonry'
+end

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <title>test</title>
+        </head>
+    <script type="text/javascript">
+        function login(){
+            var name = document.getElementById("username");
+            window.webkit.messageHandlers.loginApp.postMessage({"name": name.value});
+        }
+    function nameAndpwd() {
+        var name = document.getElementById("username");
+        var password = document.getElementById("password");
+        window.webkit.messageHandlers.logintest.postMessage({"name": name.value,"password": password.value});
+    }
+    function showAlertView(){
+        var name = document.getElementById("username");
+        alert(name.value);
+        //confirm();
+        //prompt();
+    }
+    
+    //oc - js
+    function showName(name,pwd) {
+        document.getElementById("username").value = name;
+        document.getElementById("password").value = pwd;
+    }
+    </script>
+    <body>
+        <h5>这是一个html</h5>
+        <form>
+            <label>用户名：<input type="text" id="username" name="username" value="admin" placeholder="请输入用户名"></label><br>
+            <label>密 码：<input type="text" id="password" name="password" value="admin" placeholder="请输入密码"></label><br>
+            <!--这里在js里调用oc的方法（带参数）-->
+            <button type="submit" onclick="login()">传个name</button>
+			<!--这里在js里调用oc的方法（带参数）-->
+			<button type="submit" onclick="nameAndpwd()">传name、pwd</button>
+			<!--这里直接调用oc的方法。test是你注册时写的，showAlertView是oc的方法-->
+			<button type="submit" onclick="showAlertView()">这是一个alertView</button>
+		</form>
+	</body>
+</html>
